@@ -19,9 +19,6 @@ BACKENDS_PROBE_REQUEST = os.environ.get('BACKENDS_PROBE_REQUEST', "").strip()
 BACKENDS_PROBE_REQUEST_DELIMITER = os.environ.get('BACKENDS_PROBE_DELIMITER', "|").strip()
 
 init_conf = """
-import std;
-import directors;
-import saintmode;
 sub vcl_init {
 """
 
