@@ -17,8 +17,9 @@ _ADDRESS="${ADDRESS_PORT:+-a ${ADDRESS_PORT}}"
 # Admin:Port
  _ADMIN="${ADMIN_PORT:+-T ${ADMIN_PORT}}"
 
- # Custom params
-PARAM_VALUE="${PARAM_VALUE:--p default_ttl=3600 -p default_grace=3600}"
+ 
+# Custom params
+PARAM_VALUE="${SHARED_SECRET} ${PARAM_VALUE:--p default_ttl=3600 -p default_grace=3600}"
 _VALUE="${PARAM_VALUE}"
 
 PARAMS="${_USER} ${_STORAGE} ${_ADDRESS} ${_ADMIN} ${_VALUE}"
