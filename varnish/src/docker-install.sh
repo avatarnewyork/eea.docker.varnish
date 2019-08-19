@@ -57,6 +57,12 @@ echo "========================================================================="
 apt-get update
 apt-get install -y --no-install-recommends $buildDeps
 
+echo "========================================================================="
+echo "Installing procps "
+echo "========================================================================="
+
+apt-get update && apt-get install -y procps --no-install-recommends $buildDeps
+
 
 echo "========================================================================="
 echo "Adding varnish user"
@@ -106,11 +112,6 @@ make
 make install
 ldconfig
 
-echo "========================================================================="
-echo "Installing procps "
-echo "========================================================================="
-
-apt-get update && apt-get install procps
 
 echo "========================================================================="
 echo "Installing Varnish agent"
