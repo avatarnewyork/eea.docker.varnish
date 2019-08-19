@@ -63,6 +63,11 @@ echo "========================================================================="
 
 apt-get update && apt-get install -y procps --no-install-recommends $buildDeps
 
+echo "========================================================================="
+echo "Installing telnet "
+echo "========================================================================="
+
+apt-get update && apt-get install -y telnet --no-install-recommends $buildDeps
 
 echo "========================================================================="
 echo "Adding varnish user"
