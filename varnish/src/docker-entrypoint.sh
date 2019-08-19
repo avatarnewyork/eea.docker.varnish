@@ -122,7 +122,8 @@ if [[ -f /usr/local/etc/varnish/shared_secret ]]; then
 fi
 
 if [[ $1 == "varnish" ]]; then
-   exec varnishd  -j unix,user=varnish  -F -f /etc/varnish/default.vcl ${PARAMS}
+    echo "BOOTSTRAP: exec varnishd  -j unix,user=varnish  -F -f /etc/varnish/default.vcl ${PARAMS}"
+    exec varnishd  -j unix,user=varnish  -F -f /etc/varnish/default.vcl ${PARAMS}
 else
    exec "$@"
 fi
