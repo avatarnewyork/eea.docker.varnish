@@ -19,7 +19,7 @@ _ADDRESS="${ADDRESS_PORT:+-a ${ADDRESS_PORT}}"
 
  
 # Custom params
-PARAM_VALUE="${SHARED_SECRET} ${PARAM_VALUE:--p default_ttl=3600 -p default_grace=3600}"
+PARAM_VALUE="${PARAM_VALUE:--p default_ttl=3600 -p default_grace=3600}"
 _VALUE="${PARAM_VALUE}"
 
 PARAMS="${_USER} ${_STORAGE} ${_ADDRESS} ${_ADMIN} ${_VALUE}"
@@ -113,6 +113,12 @@ if [ ! -z "$DASHBOARD_PORT" ]; then
     varnish-agent -H /var/www/html/varnish-dashboard -c $DASHBOARD_PORT
 else
     varnish-agent -H /var/www/html/varnish-dashboard
+fi
+
+# if secrets file exists, use it
+if [[ -f /usr/local/etc/varnish/shared_secret ]]; then
+   cp /usr/local/etc/varnish/shared_secret /usr/local/etc/varnish/secret && chown varnish:varnish /usr/local/etc/varnish/secret
+   PARAMS="-S /usr/local/etc/varnish/secret ${PARAMS}"
 fi
 
 if [[ $1 == "varnish" ]]; then
